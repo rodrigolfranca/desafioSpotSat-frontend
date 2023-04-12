@@ -20,7 +20,6 @@ export const PolygonsProvider = (props) => {
             }
             array.push(dado)
         });
-        console.log(array)
         setPolygons(array);
 
     }

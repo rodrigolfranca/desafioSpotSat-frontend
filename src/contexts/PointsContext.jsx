@@ -20,7 +20,6 @@ export const PointsProvider = (props) => {
             }
             array.push(dado)
         });
-        console.log(array)
         setPoints(array);
 
     }

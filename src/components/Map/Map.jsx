@@ -9,9 +9,6 @@ function Map() {
 
     const { points } = useContext(PointsContext)
     const { polygons } = useContext(PolygonsContext)
-    console.log(points, polygons)
-
-    
 
     return (
         <>
@@ -27,7 +24,7 @@ function Map() {
                 {
                     points.map(element => {
                         return (
-                        <Marker key={element.id} position={[element.geometry.coordinates[0], element.geometry.coordinates[1]]}>
+                        <Marker key={element.id} position={[element.geometry.coordinates[1], element.geometry.coordinates[0]]}>
                             <Popup>
                                 Nome: {element.name} <br /> ID: {element.id}
                             </Popup>
@@ -36,9 +33,8 @@ function Map() {
                 }
                 {
                     polygons.map(element => {
-                        return (
-                            <Polygon key={element.id} pathOptions={{ color: 'purple' }} positions={element.geometry.coordinates}  />
-                        )
+                        const reverse = element.geometry.coordinates[0].map(coordinates => coordinates.reverse())
+                        return (<Polygon key={element.id} pathOptions={{ color: 'purple' }} positions={reverse}  />)
                     })
                 }
                 </MapContainer>
